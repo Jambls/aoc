@@ -1,15 +1,14 @@
 import sys
 sys.setrecursionlimit(20000)
-import copy
 
 map = []
 with open("input.txt") as f:
     for line in f:
         map.append([elt for elt in line.strip()])
 
-energized_base = []
+energized = []
 for _ in range(len(map)):
-    energized_base.append(["." for _ in map[0]])
+    energized.append(["." for _ in map[0]])
 
 visited = []
 
@@ -46,43 +45,9 @@ def nxt(map, current, last):
     else:
         raise Exception("unexpected input")
 
+nxt(map, [0,0], [-1, 0])
 total = 0
-for i,_ in enumerate(map):
-    energized = copy.deepcopy(energized_base)
-    visited = []
-    temp = 0
-    nxt(map, [0,i], [-1, i])
-    for line in energized:
-        temp += line.count("#")
-    if temp > total:
-        total = temp
-    energized = copy.deepcopy(energized_base)
-    visited = []
-    temp = 0
-    nxt(map, [len(map[0])-1,i], [len(map[0]), i])
-    for line in energized:
-        temp += line.count("#")
-    if temp > total:
-        total = temp
-
-for i,_ in enumerate(map[0]):
-    energized = copy.deepcopy(energized_base)
-    visited = []
-    temp = 0
-    nxt(map, [i,0], [i, -1])
-    for line in energized:
-        temp += line.count("#")
-    if temp > total:
-        total = temp
-    energized = copy.deepcopy(energized_base)
-    visited = []
-    temp = 0
-    nxt(map, [i,len(map)-1], [i,len(map)])
-    for line in energized:
-        temp += line.count("#")
-    if temp > total:
-        total = temp
-
-
+for line in energized:
+    total += line.count("#")
 
 print(total)
