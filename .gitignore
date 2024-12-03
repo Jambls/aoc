@@ -1,3 +1,4 @@
 .vscode
-.hi
-.o
+*.hi
+*.o
+process

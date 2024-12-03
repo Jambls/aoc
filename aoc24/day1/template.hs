@@ -5,8 +5,8 @@ mysum :: [Int] -> Int
 mysum [] = 0
 mysum (x : y) = addone x + mysum y
 
-sumdown :: [[Int]]-> [[Int]] -> [[Int]]
-sumdown (current : below : _ ) ((this : line) : column)= 
+-- sumdown :: [[Int]]-> [[Int]] -> [[Int]]
+-- sumdown (current : below : _ ) ((this : line) : column)= 
 
 
 
